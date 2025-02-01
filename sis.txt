@@ -1,0 +1,51 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df1=pd.read_csv("C:\\Users\\user\\Documents\\student2.csv",nrows=5)
+df2=pd.read_csv("C:\\Users\\user\\Documents\\IDCARD1.csv",nrows=5)
+ans = input("\n Do you want to print the menu(y=yes/n=no): ")
+while ans =='y' or ans == "Y":
+    print("\n DataFrame operations")
+    print(" 1. display table 1")
+    print(" 2. display table 2") 
+    print(" 3. Delete details of index 0")
+    print(" 4. Add a new row")
+    print(" 5. Display first 3 rows ")
+    print(" 6. Display last 2 rows ")
+    print(" 7. bar graph")
+    choice =int(input(" enter your choice: "))
+
+    if choice == 1:
+        print(df1)
+
+    elif choice == 2:
+        print(df2)
+
+    elif choice ==3:
+        df2.drop(index=0,axis=0,inplace=True)
+        print(df2)
+
+    elif choice ==4:
+        newrow={'REG.NO':6000,'STUDENT NAME':"Amjad",'CLASS':"XI B",'MOB.NO':8078796870,'ADDRESS':"katteparambil(H)"}
+        df=df2.append(newrow,ignore_index=True)
+        print(df)
+
+    elif choice ==5:
+        print(df2.head(3))
+
+    elif choice ==6:
+        print(df2.tail(2))
+
+    elif choice ==7:
+        x = [ 'Sahil ' , 'Amar ' , 'Ali' ,'Hidayathulla' , 'Sharookh']
+        y = [ 419 , 352 , 410 , 359 , 348 ]
+        plt.xlabel('Student name')
+        plt.ylabel(' Total mark ')
+        plt.title('bar graph')
+        plt.bar(x,y,label='bar1')
+        plt.legend()
+        plt.show()
+    else:
+        break
+else:
+    print("\n please quit")
+    
